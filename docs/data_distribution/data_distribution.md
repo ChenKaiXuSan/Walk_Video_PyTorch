@@ -22,9 +22,3 @@ Here we decide to from different two ways to analyze the data distribution.
 
 1. analyzed the difference between the different fold. Such as, splitted video number, patient number, etc.
 2. Use some feature extract method to analyze the data distribution. Such as, PCA, TSNE, etc. 
-
-## Difference between the different fold
-
-
-## TSNE
-

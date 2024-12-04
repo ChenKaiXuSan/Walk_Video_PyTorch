@@ -80,24 +80,6 @@ The final confusion matrix is as follow:
 ![total cm](image-7.png)
 <center> The confusion matrix of whole dataset. The results are mean across 5-fold. </center>
 
-## Class Attention Map
-
-In image classification tasks, a class attention map may highlight which regions or features of an input image are most important for the model to make a specific class prediction. This can help interpret why a model made a certain decision.
-
-This time, We use Grad-CAM (Gradient-weighted Class Activation Mapping) to generate class attention maps in convolutional neural networks (CNNs).
-
-![fold 0 asd](image-8.png)
-![fold 0 non asd](image-9.png)
-![Alt text](image-10.png)
-![Alt text](image-11.png)
-![Alt text](image-12.png)
-![Alt text](image-13.png)
-![Alt text](image-14.png)
-![Alt text](image-15.png)
-![Alt text](image-16.png)
-![Alt text](image-17.png)
-
-
 ## What is the difference between the different folds?
 
 We ensure the same patient did not appear simultaneously in the training set and the validation set.
