@@ -298,3 +298,32 @@ docker run -itd -v $(pwd)/path:/path --gpus all --name container_name --shm-size
 ```bash
 docker exec -it container_name bash
 ```
+
+## Citation
+
+```
+@article{chen2023two,
+  title={Two-stage video-based convolutional neural networks for adult spinal deformity classification},
+  author={Chen, Kaixu and Asada, Tomoyuki and Ienaga, Naoto and Miura, Kousei and Sakashita, Kotaro and Sunami, Takahiro and Kadone, Hideki and Yamazaki, Masashi and Kuroda, Yoshihiro},
+  journal={Frontiers in Neuroscience},
+  volume={17},
+  pages={1278584},
+  year={2023},
+  publisher={Frontiers Media SA}
+}
+```
+
+The extended version of this research project is available on [IEEE Access](https://ieeexplore.ieee.org/document/10714330).
+
+```
+@ARTICLE{10714330,
+  author={Chen, Kaixu and Xu, Jiayi and Asada, Tomoyuki and Miura, Kousei and Sakashita, Kotaro and Sunami, Takahiro and Kadone, Hideki and Yamazaki, Masashi and Ienaga, Naoto and Kuroda, Yoshihiro},
+  journal={IEEE Access}, 
+  title={PhaseMix: A Periodic Motion Fusion Method for Adult Spinal Deformity Classification}, 
+  year={2024},
+  volume={12},
+  number={},
+  pages={152358-152376},
+  keywords={Legged locomotion;Feature extraction;Accuracy;Human activity recognition;Reviews;Face recognition;Diseases;Deep learning;Cameras;Surgery;Deep learning;Medical services;Adult spinal deformity;deep learning;human action recognition;healthcare;gait posture;periodic motion;motion symmetry},
+  doi={10.1109/ACCESS.2024.3479165}}
+```
