@@ -1,24 +1,22 @@
-
 <div align="center">
 
-# Adult Spinal Deformity Video Classification
+# Two-stage video-based convolutional neural networks for adult spinal deformity classification
 
-<!-- [![Paper](http://img.shields.io/badge/paper-arxiv.1001.2234-B31B1B.svg)](https://www.nature.com/articles/nature14539)
-[![Conference](http://img.shields.io/badge/NeurIPS-2019-4b44ce.svg)](https://papers.nips.cc/book/advances-in-neural-information-processing-systems-31-2018)
-[![Conference](http://img.shields.io/badge/ICLR-2019-4b44ce.svg)](https://papers.nips.cc/book/advances-in-neural-information-processing-systems-31-2018)
-[![Conference](http://img.shields.io/badge/AnyConference-year-4b44ce.svg)](https://papers.nips.cc/book/advances-in-neural-information-processing-systems-31-2018)   -->
-<!--
-ARXIV   
-[![Paper](http://img.shields.io/badge/arxiv-math.co:1480.1111-B31B1B.svg)](https://www.nature.com/articles/nature14539)
--->
-<!-- ![CI testing](https://github.com/PyTorchLightning/deep-learning-project-template/workflows/CI%20testing/badge.svg?branch=master&event=push) -->
+[![Paper](https://www.frontiersin.org/files/Taxonomy/2992.JPEG)](https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2023.1278584/full)
 
-<!--  
-Conference   
--->
 </div>
 
-## Description  
+## Abstract
+
+**Introduction**: Assessment of human gait posture can be clinically effective in diagnosing human gait deformities early in life. Currently, two methods—static and dynamic—are used to diagnose adult spinal deformity (ASD) and other spinal disorders. Full-spine lateral standing radiographs are used in the standard static method. However, this is a static assessment of joints in the standing position and does not include information on joint changes when the patient walks. Careful observation of long-distance walking can provide a dynamic assessment that reveals an uncompensated posture; however, this increases the workload of medical practitioners. A three-dimensional (3D) motion system is proposed for the dynamic method. Although the motion system successfully detected dynamic posture changes, access to the facilities was limited. Therefore, a diagnostic approach that is facility-independent, has low practice flow, and does not involve patient contact is required.
+
+**Methods**: We focused on a video-based method to classify patients with spinal disorders either as ASD, or other forms of ASD. To achieve this goal, we present a video-based two-stage machine-learning method. In the first stage, deep learning methods are used to locate the patient and extract the area where the patient is located. In the second stage, a 3D CNN (convolutional neural network) device is used to capture spatial and temporal information (dynamic motion) from the extracted frames. Disease classification is performed by discerning posture and gait from the extracted frames. Model performance was assessed using the mean accuracy, F1 score, and area under the receiver operating characteristic curve (AUROC), with five-fold cross-validation. We also compared the final results with professional observations.
+
+**Results**: Our experiments were conducted using a gait video dataset comprising 81 patients. The experimental results indicated that our method is effective for classifying ASD and other spinal disorders. The proposed method achieved a mean accuracy of 0.7553, an F1 score of 0.7063, and an AUROC score of 0.7864. Additionally, ablation experiments indicated the importance of the first stage (detection stage) and transfer learning of our proposed method.
+
+**Discussion**: The observations from the two doctors were compared using the proposed method. The mean accuracies observed by the two doctors were 0.4815 and 0.5247, with AUROC scores of 0.5185 and 0.5463, respectively. We proved that the proposed method can achieve accurate and reliable medical testing results compared with doctors' observations using videos of 1 s duration. All our code, models, and results are available at https://github.com/ChenKaiXuSan/Walk_Video_PyTorch. The proposed framework provides a potential video-based method for improving the clinical diagnosis for ASD and non-ASD. This framework might, in turn, benefit both patients and clinicians to treat the disease quickly and directly and further reduce facility dependency and data-driven systems.
+
+## Description
 
 📓 This project made with the PyTorch, PyTorch Lightning, PyTorch Video.
 
@@ -26,7 +24,7 @@ This project implements the task of classifying different medical diseases.
 
 The current phase performs a dichotomous classification task for four different disorders. classification of ASD and non-ASD.
 
-The whole procedure is divided into two steps:  
+The whole procedure is divided into two steps:
 
 1. using the detection method to extract the character-centered region and save it as a video.
 2. put the 1. processed video into 3D CNN network for training.
@@ -34,9 +32,9 @@ The whole procedure is divided into two steps:
 Detailed comments are written for most of the methods and classes.
 Have a nice code. 😄
 
-## Folder structure  
+## Folder structure
 
-``` bash
+```bash
 Walk_Video_PyTorch
 |-- imgs
 |   imgs for markdown.
@@ -57,13 +55,13 @@ Walk_Video_PyTorch
 
 1. install dependencies
 
-``` bash
-# clone project   
+```bash
+# clone project
 git clone https://github.com/ChenKaiXuSan/Walk_Video_PyTorch.git
 
-# install project   
-cd Walk_Video_PyTorch/ 
-pip install -e .   
+# install project
+cd Walk_Video_PyTorch/
+pip install -e .
 pip install -r requirements.txt
 ```
 
@@ -73,17 +71,17 @@ pip install -r requirements.txt
 # module folder
 cd Walk_Video_PyTorch/
 
-# run module 
-python project/main.py [option] > logs/output_log/xxx.log 
+# run module
+python project/main.py [option] > logs/output_log/xxx.log
 ```
 
-### one stage  
+### one stage
 
 In this stage, the interface provided by [detector2](https://detectron2.readthedocs.io/en/latest/index.html) is used for video pre-processing, in order to extract the area centered on the person and save a series of frames as video with a uniform FPS = 30.
 
-The implementation of the prepare_video.py file,  
+The implementation of the prepare_video.py file,
 
-``` python  
+```python
 usage: prepare_video.py [-h] [--img_size IMG_SIZE] [--num_workers NUM_WORKERS] [--data_path DATA_PATH] [--split_pad_data_path SPLIT_PAD_DATA_PATH] [--split_data_path SPLIT_DATA_PATH]
 
 optional arguments:
@@ -100,9 +98,9 @@ optional arguments:
 
 ```
 
-for example,  
+for example,
 
-``` python  
+```python
 cd Walk_Video_PyTorch/project/prepare_video/
 
 python prepare_video.py --img_size 512 --data_path [meta dataset path] --split_pad_data_path [split and pad dataset path] --split_data_path [split dataset path] > ./split_log.log &
@@ -111,13 +109,13 @@ python prepare_video.py --img_size 512 --data_path [meta dataset path] --split_p
 
 ⚠️ You need to replace the content in [ ] with your own actual path.
 
-### two stage  
+### two stage
 
 In this stage, the pre-processed video needs to be read and fed to the 3d cnn network for training.
 
-the implementation of the main.py file.  
+the implementation of the main.py file.
 
-``` python
+```python
 
 usage: main.py [-h] [--model {resnet,csn,x3d}] [--img_size IMG_SIZE] [--version VERSION] [--model_class_num MODEL_CLASS_NUM] [--model_depth {50,101,152}] [--max_epochs MAX_EPOCHS] [--batch_size BATCH_SIZE] [--num_workers NUM_WORKERS] [--clip_duration CLIP_DURATION]
                [--uniform_temporal_subsample_num UNIFORM_TEMPORAL_SUBSAMPLE_NUM] [--gpu_num {0,1}] [--lr LR] [--beta1 BETA1] [--beta2 BETA2] [--data_path DATA_PATH] [--split_data_path SPLIT_DATA_PATH] [--split_pad_data_path SPLIT_PAD_DATA_PATH] [--log_path LOG_PATH]
@@ -157,11 +155,11 @@ optional arguments:
                         if use the pretrained model for training.
 ```
 
-for example,  
+for example,
 
-``` python  
+```python
 
-python project/main.py --version [the version for train] --model resnet --model_depth 50 --img_size [img size] --batch_size [batch size] --clip_duration [the clip duration] --uniform_temporal_subsample_num [how many frames for train] --num_workers 16 > logs/output_logs/[version].log 2>&1 & 
+python project/main.py --version [the version for train] --model resnet --model_depth 50 --img_size [img size] --batch_size [batch size] --clip_duration [the clip duration] --uniform_temporal_subsample_num [how many frames for train] --num_workers 16 > logs/output_logs/[version].log 2>&1 &
 
 ```
 
@@ -181,13 +179,13 @@ Here the oringal bar mean the val dataset and the blue bar mean the train datase
 
 ![5fold_cv](imgs/stratified_group_kfold.png)
 
-> ⚠️ Ensure that the same patient does not appear in training/validation at the same time. 
-The number of videos can be guaranteed to be balanced, but the number of patients cannot.
+> ⚠️ Ensure that the same patient does not appear in training/validation at the same time.
+> The number of videos can be guaranteed to be balanced, but the number of patients cannot.
 
 Next give the details information of different fold.
 ![5fold_details](imgs/5fold_details.png)
 
-## Data augmentation  
+## Data augmentation
 
 Because the detection method is used to first extract the features of the characters into squares, there is no need to consider the border inconsistency when convolving.
 We use both spatial and temporal jittering for augmentation.
@@ -197,7 +195,7 @@ We train and evaluate models with clips of different frames (T = 16, 32, 64) by 
 
 At the [data_loader.py](project/dataloader/data_loader.py) we defined the transform function.
 
-``` python
+```python
 self.train_transform = Compose(
             [
                 ApplyTransformToKey(
@@ -232,20 +230,20 @@ So far, we have used the 3D Resnet structure, which are given in the next figure
 ## Transfer learning experiments
 
 A natural question that arises is whether these features also generalize to other datasets and class categories.
-We examine this question in detail by performing transfer learning experiments on the Kinetis-400. 
+We examine this question in detail by performing transfer learning experiments on the Kinetis-400.
 
 ⚠️ This time we use the 1s 32 frame and 224x224 video frame shape as the input data.
 
 - fine-tune top layer (head)
-- fine-tune last layer (stem) and top layer (head) 
+- fine-tune last layer (stem) and top layer (head)
 - fine-tune all layers
 - train from scratch
 
 ## Experimental results
 
 - from scratch
-show the Top@1 acc and Top@1 precision respectively.
-  
+  show the Top@1 acc and Top@1 precision respectively.
+
 | from scratch | 1s 16frame | 2s 32 frame | 3s 64 frame |
 | ------------ | ---------- | ----------- | ----------- |
 | accuracy     | 0.36       | 0.61        | 0.68        |
@@ -253,7 +251,7 @@ show the Top@1 acc and Top@1 precision respectively.
 
 - pre-train on Kinetics-400, which 8 frame length and 8 sample rate.
 
-    sample rate = (num_frames * sample rate) / frame per second
+  sample rate = (num_frames \* sample rate) / frame per second
 
 | pretrain  | 1s 16frame | 2s 32 frame | 3s 64 frame |
 | --------- | ---------- | ----------- | ----------- |
@@ -275,50 +273,57 @@ show the Top@1 acc and Top@1 precision respectively.
 | accuracy       | **0.82**    | x           | 0.65        |
 | precision      | 0.80        | x           | 0.60        |
 
-x means the number in the first table.  
+x means the number in the first table.
 
 ⚠️ **The accuracy have an exact calculation, but the precision has some problem when calculation, and is not accurate. So we hope the accuracy score will be used for reference.**
 
-## Docker  
+## Docker
 
 We recommend using docker to build the training environment.
 
 1. pull the official docker image, where release in the [pytorchlightning/pytorch_lightning](https://hub.docker.com/r/pytorchlightning/pytorch_lightning)
 
-``` bash  
+```bash
 docker pull pytorchlightning/pytorch_lightning
 ```
 
 2. create container.
 
-``` bach  
-docker run -itd -v $(pwd)/path:/path --gpus all --name container_name --shm-size 32g --ipc="host" <images:latest> bash 
-
+```bach
+docker run -itd -v $(pwd)/path:/path --gpus all --name container_name --shm-size 32g --ipc="host" <images:latest> bash
 ```
 
 3. enter the container and run the code.
 
-``` bash  
+```bash
 docker exec -it container_name bash
 ```
 
-## About the lib  
+## Citation
 
-stop building wheels 😄
+```
+@article{chen2023two,
+  title={Two-stage video-based convolutional neural networks for adult spinal deformity classification},
+  author={Chen, Kaixu and Asada, Tomoyuki and Ienaga, Naoto and Miura, Kousei and Sakashita, Kotaro and Sunami, Takahiro and Kadone, Hideki and Yamazaki, Masashi and Kuroda, Yoshihiro},
+  journal={Frontiers in Neuroscience},
+  volume={17},
+  pages={1278584},
+  year={2023},
+  publisher={Frontiers Media SA}
+}
+```
 
-### PyTorch Lightning  
+The extended version of this research project is available on [IEEE Access](https://ieeexplore.ieee.org/document/10714330).
 
-[PyTorch Lightning](https://pytorch-lightning.readthedocs.io/en/latest/) is the deep learning framework for professional AI researchers and machine learning engineers who need maximal flexibility without sacrificing performance at scale. Lightning evolves with you as your projects go from idea to paper/production.
-
-### PyTorch Video  
-
-[link](https://pytorchvideo.org/)
-A deep learning library for video understanding research.
-
-### detectron2
-
-[Detectron2](https://detectron2.readthedocs.io/en/latest/index.html) is Facebook AI Research's next generation library that provides state-of-the-art detection and segmentation algorithms. It is the successor of Detectron and maskrcnn-benchmark. It supports a number of computer vision research projects and production applications in Facebook.
-
-### Torch Metrics
-
-[TorchMetrics](https://torchmetrics.readthedocs.io/en/latest/) is a collection of 80+ PyTorch metrics implementations and an easy-to-use API to create custom metrics.
+```
+@ARTICLE{10714330,
+  author={Chen, Kaixu and Xu, Jiayi and Asada, Tomoyuki and Miura, Kousei and Sakashita, Kotaro and Sunami, Takahiro and Kadone, Hideki and Yamazaki, Masashi and Ienaga, Naoto and Kuroda, Yoshihiro},
+  journal={IEEE Access}, 
+  title={PhaseMix: A Periodic Motion Fusion Method for Adult Spinal Deformity Classification}, 
+  year={2024},
+  volume={12},
+  number={},
+  pages={152358-152376},
+  keywords={Legged locomotion;Feature extraction;Accuracy;Human activity recognition;Reviews;Face recognition;Diseases;Deep learning;Cameras;Surgery;Deep learning;Medical services;Adult spinal deformity;deep learning;human action recognition;healthcare;gait posture;periodic motion;motion symmetry},
+  doi={10.1109/ACCESS.2024.3479165}}
+```
